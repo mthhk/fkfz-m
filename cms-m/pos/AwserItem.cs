@@ -10,18 +10,16 @@ using System;
 using System.Collections.Generic;
 namespace cms_m.pos
 {
-	/// <summary>
-	/// Description of Class1.
-	/// </summary>
-	public class AwserItem
-	{
-		public String title { get; set; }
-		public List<String> items { get; set; }
-		public int awserIndex { get; set; }
-		public int score { get; set; }
-		
-		public AwserItem()
-		{
-		}
-	}
+    public class Option
+    {
+        public Option() { }
+
+        public Option(int id, String title)
+        {
+            Id = id;
+            Title = title;
+        }
+        public int Id { get; set; }
+        public String Title { get; set; }
+    }
 }

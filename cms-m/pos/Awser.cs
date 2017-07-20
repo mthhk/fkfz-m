@@ -15,9 +15,15 @@ namespace cms_m.pos
 	/// </summary>
 	public class Awser
 	{
-		public List<AwserItem> awserItems { get; set; }
+		public String title { get; set; }
+        public List<Option> items { get; set; }
+		/**正确答案在items中的索引**/
+		public int awserIndex { get; set; }
+		public int score { get; set; }
+		
 		public Awser()
 		{
+            items = new List<Option>();
 		}
 	}
 }

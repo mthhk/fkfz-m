@@ -20,6 +20,7 @@ namespace cms_m.pos
 		public String img2 { get; set; }
 		public String  startTime{ get; set; }
 		public String text { get; set; }
+        public String textPath { get; set; }//lyt
 
 		public MediaPage()
 		{

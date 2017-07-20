@@ -23,7 +23,8 @@ namespace cms_m
 		// callback best , but ,fuck that~
 		public TreeNode resultNode = null;
 		private Media media;
-		
+        string txtPath;
+
 		public MediaAddForm()
 		{
 			//
@@ -65,9 +66,10 @@ namespace cms_m
 			MediaPage page = new MediaPage();
 			page.img1 = img1.Text;
 			page.img2 = img2.Text;
-			page.startTime = startTimeText.Text;
+			page.startTime = startTimeText.Text.Replace("：",":");
 			page.text = text.Text;
 			page.note = note.Text;
+            page.textPath = txtPath;
 			if (media.mediaPages == null) {
 				media.mediaPages = new List<MediaPage>();
 			}
@@ -78,6 +80,7 @@ namespace cms_m
 			startTimeText.Text = null;
 			note.Text = null;
 			text.Text = null;
+            txtPath = null;
 			
 		}
 		void Button1Click(object sender, EventArgs e)
@@ -153,8 +156,9 @@ namespace cms_m
 			var ofd = new OpenFileDialog(); 
 			ofd.Filter = "文本文件(*.txt)|*.txt";
 			if (ofd.ShowDialog() == DialogResult.OK) {
-				var filePath = ofd.FileName.ToString();
-				using (var reader = new StreamReader(filePath, Encoding.Default)) {
+                txtPath = ofd.FileName.ToString();
+                using (var reader = new StreamReader(txtPath, Encoding.Default))
+                {
 					text.Text = reader.ReadToEnd();
 				} 
 			}

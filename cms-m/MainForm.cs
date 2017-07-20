@@ -95,7 +95,7 @@ namespace cms_m
 		}
 		void AddMediaBtnClick(object sender, EventArgs e)
 		{
-			if (topic == null ) {
+			if (topic == null) {
 				alert("还未初始化");
 				return;
 			}
@@ -159,7 +159,7 @@ namespace cms_m
 					videoNode.Nodes.Add(node);
 				}
 			}
-			// stop 2__media
+			// step 2__media
 			if (topic.medias != null && topic.medias.Count > 0) {
 				foreach (var media in topic.medias) {
 					var node = new TreeNode(media.name);
@@ -178,11 +178,101 @@ namespace cms_m
 					mediaNode.Nodes.Add(node);
 				}
 			}
+			// step 3__quession
+			if (topic.awser != null && topic.awser.Count > 0) {
+				foreach (var awnser in topic.awser) {
+					var node = new TreeNode(awnser.title);
+					node.Nodes.Add(new TreeNode("分数：" + awnser.score));
+					for (int i = 0; i < 4; i++) {
+						var item = awnser.items[i];
+						Boolean rightAwnser = awnser.awserIndex == i;
+						if (rightAwnser) {
+							node.Nodes.Add(new TreeNode("[" + "ABCD".Substring(i, 1) + "]√√√" + item));
+						} else {
+							node.Nodes.Add(new TreeNode("[" + "ABCD".Substring(i, 1) + "]" + item));
+						}
+						
+					}
+					answerNode.Nodes.Add(node);
+				}
+			}
 		}
 		 
 		void alert(string msg)
 		{
 			MessageBox.Show(msg);
 		}
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (null != topic)
+            {
+                topic.CreateTopic("D:");
+            }
+        }
+		void Button5Click(object sender, EventArgs e)
+		{
+			if (Util.isEmpty(quession, anwserA, anwserB, anwserC, anwserD, score)) {
+				alert("所有选项均为必填项");
+				return;
+			}
+			if (topic == null) {
+				alert("还未初始化");
+				return;
+			}
+			var awser = new Awser();
+			awser.awserIndex = getAwnserIndex();
+			awser.score = Int32.Parse(score.Text);
+			awser.title = quession.Text;
+            awser.items.Add(new Option(0,anwserA.Text));
+			awser.items.Add(new Option(1,anwserB.Text));
+			awser.items.Add(new Option(2,anwserC.Text));
+			awser.items.Add(new Option(3,anwserD.Text));
+			topic.awser.Add(awser);
+			quession.Text = "";
+			anwserA.Text = "";
+			anwserB.Text = "";
+			anwserD.Text = "";
+			anwserC.Text = "";
+            score.Text = "";
+			render();
+		}
+		
+		public   int getAwnserIndex()
+		{
+			if (rightAnwserA.Checked) {
+				return 0;
+			} else if (rightAnwserB.Checked) {
+				return 1;
+			} else if (rightAnwserC.Checked) {
+				return 2;
+			} else if (rightAnwserD.Checked) {
+				return 3;
+			}
+			return 0;
+		}
+		void GenerateBtnClick(object sender, EventArgs e)
+		{
+            if (!Util.ValidateDir(textBox1.Text))
+            {
+                alert("请选择有效的主题存储路径");
+                return;
+            }
+            if (null != topic)
+            {
+                topic.CreateTopic(textBox1.Text);
+            }
+		}
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = folderBrowserDialog1.SelectedPath;
+                textBox1.Text = path;
+            }
+        }
 	}
 }

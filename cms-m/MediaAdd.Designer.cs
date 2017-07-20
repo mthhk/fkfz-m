@@ -256,7 +256,7 @@ namespace cms_m
 			this.startTimeText.Name = "startTimeText";
 			this.startTimeText.Size = new System.Drawing.Size(248, 21);
 			this.startTimeText.TabIndex = 7;
-			this.startTimeText.Text = "00:00:32";
+			this.startTimeText.Text = "输入这段文字在背景音乐中的起始时间，格式：时:分:秒，比如：00:00:32";
 			// 
 			// button3
 			// 
