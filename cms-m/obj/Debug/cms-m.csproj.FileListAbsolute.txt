@@ -1,0 +1,9 @@
+E:\cms-m\cms-m\cms-m\obj\Debug\cms-m.csprojResolveAssemblyReference.cache
+E:\cms-m\cms-m\cms-m\bin\Debug\cms-m.exe.config
+E:\cms-m\cms-m\cms-m\bin\Debug\cms-m.exe
+E:\cms-m\cms-m\cms-m\bin\Debug\cms-m.pdb
+E:\cms-m\cms-m\cms-m\obj\Debug\cms_m.MainForm.resources
+E:\cms-m\cms-m\cms-m\obj\Debug\cms-m.csproj.GenerateResource.Cache
+E:\cms-m\cms-m\cms-m\obj\Debug\cms-m.exe
+E:\cms-m\cms-m\cms-m\obj\Debug\cms-m.pdb
+E:\cms-m\cms-m\cms-m\obj\Debug\cms_m.MediaAddForm.resources
